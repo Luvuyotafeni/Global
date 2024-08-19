@@ -1,4 +1,3 @@
-// src/components/Timeline.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -12,11 +11,11 @@ const Timeline = () => {
         const response = await axios.get('https://arthurfrost.qflo.co.za/php/getTimeline.php');
         const data = response.data;
 
-        // Access the 'Timeline' array in the response
-        if (data && Array.isArray(data.Timeline)) {
+        // Navigate to the 'Timeline' array in the JSON structure
+        if (data && data.Timeline && Array.isArray(data.Timeline)) {
           setTimelineData(data.Timeline);
         } else {
-          console.error('Expected Timeline to be an array:', data);
+          console.error('Timeline array not found or is not an array:', data);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -32,7 +31,7 @@ const Timeline = () => {
     return <div>Loading...</div>;
   }
 
-  if (!Array.isArray(timelineData) || timelineData.length === 0) {
+  if (!timelineData.length) {
     return <div>No timeline data available</div>;
   }
 
@@ -46,7 +45,7 @@ const Timeline = () => {
           <p><strong>Description:</strong> {item.Description || 'No description available.'}</p>
           {item.Icon && (
             <img
-              src={`https://arthurfrost.qflo.co.za/Images${item.Icon}`}
+              src={`https://arthurfrost.qflo.co.za/${item.Icon}`}
               alt={`Icon for ${item.Title}`}
               style={{ maxWidth: '100%', height: 'auto' }}
             />
