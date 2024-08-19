@@ -1,11 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
 import Timeline from './components/Timeline';
 
 function App() {
   return (
     <div className="App">
-      <Timeline/>
+      <Timeline />
     </div>
   );
 }
