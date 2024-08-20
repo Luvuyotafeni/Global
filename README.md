@@ -13,12 +13,20 @@ Installation
 Clone the repository:
 
 bash
-git clone https://github.com/your-username/timeline-app.git
+git clone https://github.com/Luvuyotafeni/Global.git
 Navigate to the project directory:
 
 bash
-cd timeline-app
-Install the dependencies:
+cd Global
+Install the global dependencies:
+
+bash
+npm install
+Navigate to the components folder:
+
+bash
+cd time-line
+Install the project dependencies:
 
 bash
 npm install
@@ -39,7 +47,7 @@ bash
 yarn start
 Open your browser and navigate to:
 
-arduino
+bash
 http://localhost:3000
 The application will automatically reload if you make changes to the code. You will also see any lint errors in the console.
 
