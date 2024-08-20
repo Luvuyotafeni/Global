@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Timeline.css';
 
 const Timeline = () => {
   const [timelineData, setTimelineData] = useState([]);
@@ -36,10 +37,10 @@ const Timeline = () => {
   }
 
   return (
-    <div>
+    <div className="timeline-container">
       <h1>Timeline</h1>
       {timelineData.map((item) => (
-        <div key={item.Id} style={{ marginBottom: '20px' }}>
+        <div key={item.Id} className="timeline-item">
           <h2>{item.Title}</h2>
           <p><strong>Episode:</strong> {item.Episode}</p>
           <p><strong>Description:</strong> {item.Description || 'No description available.'}</p>
@@ -52,26 +53,27 @@ const Timeline = () => {
           <p><strong>Epoch:</strong> {item.Epoch}</p>
           <p><strong>Audio Size:</strong> {item.AudioSize} bytes</p>
           <p><strong>Media:</strong> {item.Media}</p>
-          {item.Icon && (
-            <img
-              src={`https://arthurfrost.qflo.co.za/${item.Icon}`}
-              alt={`Icon for ${item.Title}`}
-              style={{ maxWidth: '100%', height: 'auto' }}
-            />
-          )}
-          {item.Image && (
-            <img
-              src={`https://arthurfrost.qflo.co.za/${item.Image}`}
-              alt={`Image for ${item.Title}`}
-              style={{ maxWidth: '100%', height: 'auto' }}
-            />
-          )}
-          {item.Audio && (
-            <audio controls>
-              <source src={`https://arthurfrost.qflo.co.za/${item.Audio}`} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          )}
+
+          <div className="media-container">
+            {item.Icon && (
+              <img
+                src={`https://arthurfrost.qflo.co.za/${item.Icon}`}
+                alt={`Icon for ${item.Title}`}
+              />
+            )}
+            {item.Image && (
+              <img
+                src={`https://arthurfrost.qflo.co.za/${item.Image}`}
+                alt={`Image for ${item.Title}`}
+              />
+            )}
+            {item.Audio && (
+              <audio controls>
+                <source src={`https://arthurfrost.qflo.co.za/${item.Audio}`} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            )}
+          </div>
         </div>
       ))}
     </div>
